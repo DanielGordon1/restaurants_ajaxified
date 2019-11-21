@@ -1,0 +1,26 @@
+console.log('Hi with AJAX', '<%= @review %>');
+
+// 1 target the reviews list
+// 2 build the review HTML
+// 3 add the review HTML to the list of reviews
+
+function addReview(html) {
+  const list = document.querySelector('#reviews');
+  list.insertAdjacentHTML('beforeend', html);
+}
+
+function refreshForm(html) {
+  const form = document.querySelector('#new_review');
+  form.innerHTML = html;
+}
+
+<% if @review.persisted? %>
+  addReview('<%= j render "reviews/show", review: @review %>');
+  refreshForm('<%= j render "reviews/form", restaurant: @restaurant, review: Review.new %>');
+<% else %>
+  refreshForm('<%= j render "reviews/form", restaurant: @restaurant, review: @review %>');
+<% end %>
+
+
+
+
