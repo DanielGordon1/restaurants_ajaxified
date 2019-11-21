@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h1><%= @restaurant.name %> <br>
+        <small><%= @restaurant.address %></small>
+      </h1>
+      <hr>
+      <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium earum ab doloribus repudiandae maxime amet aspernatur exercitationem commodi corrupti, aliquid. Voluptatum quae magnam magni sint vel eos blanditiis, qui reprehenderit!</div>
+      <div>Ratione enim voluptatum excepturi nisi obcaecati magnam reprehenderit dolor nemo pariatur distinctio animi atque dolorem, cupiditate voluptatibus earum quia illo illum consectetur sit totam, incidunt laudantium? Debitis et iste aut?</div>
+      <div>Debitis, culpa ipsam est dignissimos dolore accusamus possimus aliquid, ipsum doloremque nobis. Minima quisquam quasi sit tenetur omnis vel dicta impedit, atque rerum placeat error adipisci consectetur at voluptate? Optio!</div>
+      <div>Earum eaque ad, quisquam totam deleniti sit labore quibusdam eum dolor vero voluptatum soluta aperiam nostrum consequuntur temporibus doloremque qui, excepturi molestias accusamus assumenda accusantium officia tenetur. Odit, blanditiis, eos?</div>
+      <div>Sapiente quaerat architecto nulla quis, rem eos, quos. Sed facilis fugit nihil tenetur eligendi tempora ad, iusto quis. Quis ab harum consequatur tempore repellendus iure suscipit minima molestias itaque tenetur.</div>
+      <div>Numquam consectetur iste temporibus, consequatur, impedit neque velit sunt rem quaerat! Adipisci eaque error nulla quaerat magni dolor itaque? Mollitia odit maiores quibusdam eius modi et totam, maxime porro cum.</div>
+      <div>Magni, explicabo, recusandae nulla amet quam nihil et eius minus ex assumenda modi maiores deserunt officia. Necessitatibus animi, vel corrupti alias possimus minus aliquam nisi distinctio, molestiae nobis, blanditiis odit!</div>
+      <div>Tempora sed, deleniti voluptates suscipit tempore itaque, earum numquam tenetur quas beatae maiores. Perferendis vel officia alias, doloremque labore est, veritatis iusto delectus tempore accusamus, libero illum quo, optio provident!</div>
+      <div>Iusto, dolore! Aperiam at quos dolore adipisci, accusantium non sint minus odio cumque mollitia dignissimos illo! A minus tempore voluptatum ipsa earum enim dolore quo, expedita aliquid ducimus tempora iure.</div>
+      <div>Qui sunt perspiciatis alias eveniet dolorum placeat asperiores quasi iste, maiores voluptas tempore quam earum vel deserunt vitae in voluptatem animi assumenda, ex beatae! Dignissimos cupiditate aliquam excepturi id magni!</div>
+      <h2>
+        <%= pluralize @restaurant.reviews.size, "review" %>
+      </h2>
+      <div id="reviews">
+        <% if @restaurant.reviews.blank? %>
+          Be the first to leave a review for <%= @restaurant.name %>
+        <% else %>
+          <% @restaurant.reviews.each do |review| %>
+            <!-- we are the passing the review as a local variable to the partial  -->
+            <%= render 'reviews/show', review: review %>
+          <% end %>
+        <% end %>
+      </div>
+      <%= render 'reviews/form', restaurant: @restaurant, review: @review %>
+    </div>
+  </div>
+</div>
